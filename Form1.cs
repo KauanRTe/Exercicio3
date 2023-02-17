@@ -68,7 +68,7 @@ namespace Exercicio3
                 lbNome.SelectedIndex = l.SelectedIndex; // Todas as listbox recebem a seleção equivalente.
                 lbDataNascimento.SelectedIndex = l.SelectedIndex;
                 lbCPF.SelectedIndex = l.SelectedIndex;
-
+                //Comentei
                 txbNome.Text = lbNome.SelectedItem.ToString(); //Os textboxs recebem o valor selecionado.
                 txbDataNascimento.Text = lbDataNascimento.SelectedItem.ToString();
                 txbCPF.Text = lbCPF.SelectedItem.ToString();
