@@ -31,13 +31,8 @@ namespace Exercicio3
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txbNome = new System.Windows.Forms.TextBox();
-            this.dtpDataNascimento = new System.Windows.Forms.DateTimePicker();
-            this.rbM = new System.Windows.Forms.RadioButton();
-            this.rbO = new System.Windows.Forms.RadioButton();
-            this.rbF = new System.Windows.Forms.RadioButton();
             this.txbCPF = new System.Windows.Forms.TextBox();
             this.lbNome = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -45,10 +40,10 @@ namespace Exercicio3
             this.label6 = new System.Windows.Forms.Label();
             this.lbCPF = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.lbSexo = new System.Windows.Forms.ListBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.btnRemover = new System.Windows.Forms.Button();
+            this.txbDataNascimento = new System.Windows.Forms.TextBox();
+            this.btnEditar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -71,16 +66,6 @@ namespace Exercicio3
             this.label2.TabIndex = 1;
             this.label2.Text = "Data de Nascimento";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(158, 259);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Sexo";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -97,46 +82,6 @@ namespace Exercicio3
             this.txbNome.Name = "txbNome";
             this.txbNome.Size = new System.Drawing.Size(217, 20);
             this.txbNome.TabIndex = 4;
-            // 
-            // dtpDataNascimento
-            // 
-            this.dtpDataNascimento.Location = new System.Drawing.Point(79, 134);
-            this.dtpDataNascimento.Name = "dtpDataNascimento";
-            this.dtpDataNascimento.Size = new System.Drawing.Size(217, 20);
-            this.dtpDataNascimento.TabIndex = 5;
-            // 
-            // rbM
-            // 
-            this.rbM.AutoSize = true;
-            this.rbM.Location = new System.Drawing.Point(79, 298);
-            this.rbM.Name = "rbM";
-            this.rbM.Size = new System.Drawing.Size(73, 17);
-            this.rbM.TabIndex = 6;
-            this.rbM.TabStop = true;
-            this.rbM.Text = "Masculino";
-            this.rbM.UseVisualStyleBackColor = true;
-            // 
-            // rbO
-            // 
-            this.rbO.AutoSize = true;
-            this.rbO.Location = new System.Drawing.Point(245, 298);
-            this.rbO.Name = "rbO";
-            this.rbO.Size = new System.Drawing.Size(51, 17);
-            this.rbO.TabIndex = 7;
-            this.rbO.TabStop = true;
-            this.rbO.Text = "Outro";
-            this.rbO.UseVisualStyleBackColor = true;
-            // 
-            // rbF
-            // 
-            this.rbF.AutoSize = true;
-            this.rbF.Location = new System.Drawing.Point(162, 298);
-            this.rbF.Name = "rbF";
-            this.rbF.Size = new System.Drawing.Size(67, 17);
-            this.rbF.TabIndex = 8;
-            this.rbF.TabStop = true;
-            this.rbF.Text = "Feminino";
-            this.rbF.UseVisualStyleBackColor = true;
             // 
             // txbCPF
             // 
@@ -202,28 +147,9 @@ namespace Exercicio3
             this.label7.TabIndex = 15;
             this.label7.Text = "CPF";
             // 
-            // lbSexo
-            // 
-            this.lbSexo.FormattingEnabled = true;
-            this.lbSexo.Location = new System.Drawing.Point(996, 44);
-            this.lbSexo.Name = "lbSexo";
-            this.lbSexo.Size = new System.Drawing.Size(150, 277);
-            this.lbSexo.TabIndex = 16;
-            this.lbSexo.SelectedIndexChanged += new System.EventHandler(this.lbSexo_SelectedIndexChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(1049, 21);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(45, 20);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "Sexo";
-            // 
             // btnAdicionar
             // 
-            this.btnAdicionar.Location = new System.Drawing.Point(79, 354);
+            this.btnAdicionar.Location = new System.Drawing.Point(35, 294);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(80, 27);
             this.btnAdicionar.TabIndex = 18;
@@ -233,22 +159,40 @@ namespace Exercicio3
             // 
             // btnRemover
             // 
-            this.btnRemover.Location = new System.Drawing.Point(190, 354);
+            this.btnRemover.Location = new System.Drawing.Point(243, 294);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(80, 27);
             this.btnRemover.TabIndex = 19;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
+            // 
+            // txbDataNascimento
+            // 
+            this.txbDataNascimento.Location = new System.Drawing.Point(79, 145);
+            this.txbDataNascimento.Name = "txbDataNascimento";
+            this.txbDataNascimento.Size = new System.Drawing.Size(217, 20);
+            this.txbDataNascimento.TabIndex = 20;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Location = new System.Drawing.Point(140, 294);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(80, 27);
+            this.btnEditar.TabIndex = 21;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1301, 538);
+            this.Controls.Add(this.btnEditar);
+            this.Controls.Add(this.txbDataNascimento);
             this.Controls.Add(this.btnRemover);
             this.Controls.Add(this.btnAdicionar);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.lbSexo);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lbCPF);
             this.Controls.Add(this.label6);
@@ -256,13 +200,8 @@ namespace Exercicio3
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lbNome);
             this.Controls.Add(this.txbCPF);
-            this.Controls.Add(this.rbF);
-            this.Controls.Add(this.rbO);
-            this.Controls.Add(this.rbM);
-            this.Controls.Add(this.dtpDataNascimento);
             this.Controls.Add(this.txbNome);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
@@ -277,13 +216,8 @@ namespace Exercicio3
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txbNome;
-        private System.Windows.Forms.DateTimePicker dtpDataNascimento;
-        private System.Windows.Forms.RadioButton rbM;
-        private System.Windows.Forms.RadioButton rbO;
-        private System.Windows.Forms.RadioButton rbF;
         private System.Windows.Forms.TextBox txbCPF;
         private System.Windows.Forms.ListBox lbNome;
         private System.Windows.Forms.Label label5;
@@ -291,10 +225,10 @@ namespace Exercicio3
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ListBox lbCPF;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ListBox lbSexo;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.Button btnRemover;
+        private System.Windows.Forms.TextBox txbDataNascimento;
+        private System.Windows.Forms.Button btnEditar;
     }
 }
 

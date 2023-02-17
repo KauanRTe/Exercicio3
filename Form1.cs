@@ -16,6 +16,7 @@ namespace Exercicio3
         SqlConnection conexao = new SqlConnection("Data Source=OSA0625222W10-1;Initial Catalog=Ex3;Integrated Security=True");
         SqlCommand comando = new SqlCommand();
         SqlDataReader dr;
+        // Nova
         public Form1()
         {
             InitializeComponent();
@@ -31,10 +32,7 @@ namespace Exercicio3
         {
             txbNome.Clear();
             txbCPF.Clear();
-            rbO.Checked = false;
-            rbM.Checked = false;
-            rbF.Checked = false;
-            dtpDataNascimento.Value = DateTime.Now;
+            txbDataNascimento.Clear();
         }
 
         private void LimparLista()
@@ -42,7 +40,6 @@ namespace Exercicio3
             lbNome.Items.Clear();
             lbDataNascimento.Items.Clear();
             lbCPF.Items.Clear();
-            lbSexo.Items.Clear();
         }
         private void CarregarLista()
         {
@@ -56,7 +53,6 @@ namespace Exercicio3
                     lbNome.Items.Add(dr[0].ToString());
                     lbDataNascimento.Items.Add(dr[1].ToString());
                     lbCPF.Items.Add(dr[2].ToString());
-                    lbSexo.Items.Add(dr[3].ToString());
                 }
             }
             conexao.Close();
@@ -72,10 +68,9 @@ namespace Exercicio3
                 lbNome.SelectedIndex = l.SelectedIndex; // Todas as listbox recebem a seleção equivalente.
                 lbDataNascimento.SelectedIndex = l.SelectedIndex;
                 lbCPF.SelectedIndex = l.SelectedIndex;
-                lbSexo.SelectedIndex = l.SelectedIndex;
 
                 txbNome.Text = lbNome.SelectedItem.ToString(); //Os textboxs recebem o valor selecionado.
-                dtpDataNascimento.Text = lbDataNascimento.SelectedItem.ToString();
+                txbDataNascimento.Text = lbDataNascimento.SelectedItem.ToString();
                 txbCPF.Text = lbCPF.SelectedItem.ToString();
             }
         }
@@ -98,21 +93,44 @@ namespace Exercicio3
         private void lbSexo_SelectedIndexChanged(object sender, EventArgs e)
         {
             Alinhar(sender);
-            if (lbSexo.SelectedItem.ToString() == "Masculino") rbM.Checked = true;
-            else if (lbSexo.SelectedItem.ToString() == "Feminino") rbF.Checked = true;
-            else if (lbSexo.SelectedItem.ToString() == "Outro") rbO.Checked = true;
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             conexao.Open();
-            comando.CommandText = "insert into Clientes(Nome, DataNascimento, CPF, Sexo) values ('" + txbNome.Text + "','" + dtpDataNascimento.Text + "', '" + txbCPF.Text + "')";
+            comando.CommandText = "insert into Cadastro(Nome, DataNascimento, CPF) values ('" + txbNome.Text + "','" + txbDataNascimento.Text + "','" + txbCPF.Text + "')";
+            comando.ExecuteNonQuery();
+            conexao.Close();
+            //Teste
+            LimparLista();
+            CarregarLista();
+            LimparTxt();
+        }
+
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+            conexao.Open();
+            comando.CommandText = "delete from Cadastro where nome = '" + txbNome.Text + "'";
             comando.ExecuteNonQuery();
             conexao.Close();
 
             LimparLista();
             CarregarLista();
             LimparTxt();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            conexao.Open();
+            comando.CommandText = "update Cadastro set nome = '" + txbNome.Text + "',DataNascimento = '" + txbDataNascimento.Text + "', CPF = '" + txbCPF.Text + "' where nome = '" + lbNome.SelectedItem.ToString() + "'";
+
+            comando.ExecuteNonQuery();
+            conexao.Close();
+            LimparLista();
+            CarregarLista();
+            LimparTxt();
+
+            txbNome.Focus();
         }
     }
 }
